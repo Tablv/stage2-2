@@ -1,0 +1,130 @@
+/* less注释和css一样 */ 
+// 1.定义变量
+// 以 @ 开头 ,变量名 由 字母 数字 下划线 中划线组成.
+// 存在作用域,局部作用域 优先 全局作用域
+@base : #ddd; //全局变量
+div{
+    background:@base;
+}
+
+//变量计算
+@gray:#797979;
+@light-g:#f2f2f2;
+@width:200px;
+
+div{
+    box-sizing:border-box;
+    background: @gray + @light-g;
+    color:@gray*2;
+    width:@width*2;
+}
+
+//变量的混合(mixins) 样式组合
+// 将定义好的一个classA 引入到 classB,实现 classB 继承 classA的属性;
+// 还可以带参数调用 classA
+
+//@radius形参,4px默认值
+.border(@radius:4px){
+    border-radius:@radius;
+}
+
+.arc1{
+    width:200px;
+    height:200px;
+    .border(50%);
+    // 调用时,传入实参
+}
+
+.arc2{
+    width: 100px;
+    height: 100px;
+    background: #777;
+    .border(50%);
+    //调用时,传入实参
+}
+
+//嵌套规则
+/* div > h2 | p > a > span */ 
+
+// less写法
+div{
+    widows: 120px;
+    height: 210px;
+    h2{
+        font-size:10px;
+    }
+    p{
+        padding:10px;
+        a{
+            text-decoration:none;
+            &:hover{
+                text-decoration:underline;
+            }
+            span{
+                color:#555; 
+            }
+        }
+    } 
+
+}
+// 函数的应用
+// less提供了一些自定义的函数
+
+/*
+    lighten(@color,n%); 变亮
+    darken(@color,n%); 变暗
+    saturate(@color,n%);设置饱和度
+    mix(@color1,@color2);颜色混合
+    fadeout(@color,n%);更透明
+    fadein(@color,n%); 更不透明
+
+*/
+
+@color:#333;
+
+div{
+    background:mix(@color,#ff55ff);
+}
+
+//作用域
+// 和js中的作用域很像,有全局和局部作用域
+
+@scope:200px;
+div{
+    @scope:100px; //局部变量
+    width:@scope;
+}
+div{
+    width:@scope;
+}
+
+//css的媒体查询  @media
+
+// @media(min-width:990px){
+//     div{
+//         ....
+//     }
+// }
+
+div .container{
+    @media (min-width:900px){
+        //直接写样式
+        background: #111111;;
+    }
+    @media (max-width:899px) and (min-width:768px){
+        //直接写样式
+        background:#555555;
+    }
+    @media (max-width:767px){
+        //直接写样式
+        background:#999999;
+    }
+}
+
+//@import指令
+// Less中使用@import 可以将外部less文件加载到当前文件
+
+// A.less 定义一个变量 @aaa:red;
+// B.less 引入 A.less   
+//在 B.less中是可以 使用A.less里的变量,与功能
+// 功能类似,将两个文件合并为一个文件

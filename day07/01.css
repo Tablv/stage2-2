@@ -1,0 +1,76 @@
+/* less注释和css一样 */
+div {
+  background: #ddd;
+}
+div {
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #f2f2f2;
+  width: 400px;
+}
+.arc1 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.arc2 {
+  width: 100px;
+  height: 100px;
+  background: #777;
+  border-radius: 50%;
+}
+/* div > h2 | p > a > span */
+div {
+  widows: 120px;
+  height: 210px;
+}
+div h2 {
+  font-size: 10px;
+}
+div p {
+  padding: 10px;
+}
+div p a {
+  text-decoration: none;
+}
+div p a:hover {
+  text-decoration: underline;
+}
+div p a span {
+  color: #555;
+}
+/*
+    lighten(@color,n%); 变亮
+    darken(@color,n%); 变暗
+    saturate(@color,n%);设置饱和度
+    mix(@color1,@color2);颜色混合
+    fadeout(@color,n%);更透明
+    fadein(@color,n%); 更不透明
+
+*/
+div {
+  background: #994499;
+}
+div {
+  width: 100px;
+}
+div {
+  width: 200px;
+}
+@media (min-width: 900px) {
+  div .container {
+    background: #111111;
+  }
+}
+@media (max-width: 899px) and (min-width: 768px) {
+  div .container {
+    background: #555555;
+  }
+}
+@media (max-width: 767px) {
+  div .container {
+    background: #999999;
+  }
+}
+
+

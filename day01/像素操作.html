@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="c1" width="400" height="400"></canvas>
+    <script>
+        var c1 = document.getElementById('c1');
+        var ctx = c1.getContext('2d');
+        //绘制一个 矩形
+        ctx.fillStyle = '#f00';
+        ctx.fillRect(10,10,100,100);
+        //把该矩形的imageData获取出来
+        var imageData = ctx.getImageData(10,10,100,100);
+        console.log(imageData);
+        //处理imageData像素,把颜色改为蓝色
+        for(var i=0;i<imageData.data.length;i+=4){
+            //因为四个一组,所以步长改为4
+            imageData.data[i]=0;
+            imageData.data[i+2]=255;
+        }
+        ctx.putImageData(imageData,120,10);
+    </script>
+</body>
+</html> 

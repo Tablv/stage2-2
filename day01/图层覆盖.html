@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <canvas id='c1' width='500' height='400'></canvas>
+  </body>
+  <script>
+     var c1 = document.getElementById('c1');
+     var ctx = c1.getContext('2d');
+     // 绘制矩形 - 原有图形 
+     ctx.fillStyle = 'red';
+     ctx.fillRect(10,10,100,100);
+     // 设置图层顺序 
+     ctx.globalCompositeOperation = "destination-over";
+     // 在绘制一个 新图形
+     ctx.fillStyle = 'blue';
+     ctx.fillRect(70,50, 100,100);
+     
+     /* destination-out 效果  */  
+     // 绘制矩形 - 原有图形 
+     ctx.fillStyle = 'red';
+     ctx.fillRect(10,170,100,100);
+     // 设置图层顺序 
+     ctx.globalCompositeOperation = "destination-out";
+     // 在绘制一个 新图形
+     ctx.fillStyle = 'blue';
+     ctx.fillRect(70,220, 100,100); 
+  </script>
+</body>
+</html>

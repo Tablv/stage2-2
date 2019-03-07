@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /* 类数组函数  */
+    function boo(){
+        console.log(arguments);
+        var arg=Array.prototype.slice.call(arguments);
+        console.log(arg);
+        console.log(arg instanceof Array);
+    };
+    boo('x','y','z');
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id='c1' width='500' height='400'></canvas>
+</body>
+<script>
+   var c1 = document.getElementById('c1');
+   var ctx = c1.getContext('2d');
+   // 绘制实心文字  fillText() 
+   ctx.fillStyle = '#f0f';
+   ctx.font = 'bold 30px 宋体'; // 加粗  px 字体 
+   ctx.fillText('小明, 晚上去我那坐坐',10,30);
+   // 绘制空心字体  strokeText() 
+   ctx.strokeStyle = '#2aa';
+   ctx.font = "35px Microsoft yahei";
+   ctx.textAlign = 'center'; 
+   ctx.strokeText('你要干嘛', 250, 70);
+   // 设置 文字 阴影
+   ctx.fillStyle = '#aa2';
+   ctx.textAlign = 'left';
+   // 在绘制之前 设置阴影
+   ctx.shadowColor = '#797979';
+   ctx.shadowOffsetX = 5; 
+   ctx.shadowOffsetY = 5;
+   ctx.shadowBlur = 5; 
+   ctx.fillText('带你去吃KFC', 30, 100);
+   
+</script>
+</html>

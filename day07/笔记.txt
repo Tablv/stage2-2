@@ -1,0 +1,33 @@
+Boot  -- 插件
+    Boot 的插件是基于jQuery提供的,可以整体引用,也可以单独引用.
+            调用方式 data-* H5扩展属性的方式
+    1.模态框(modal)
+    父窗口弹出一个子窗体,子窗体若不关闭,父窗体无法获得焦点,父子之间可以传递数据.
+    eg:alert();confirm();prompt();
+
+    2.模态框结构
+        <!-- data-toggle : 绑定单击事件  , data-target:目标 与href类似-->
+        <button type="button" data-toggle="modal" data-target="#modal-one">按钮</button>
+        <div class="modal" id="modal-one">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="header">头部</div>
+                    <div class="body">主体</div>
+                    <div class="footer">底部</div>
+                </div>
+            </div>
+        </div>
+
+
+Boot 定制 --Less
+    Less 是一门CSS预处理语言,它扩展了CSS,增加了变量,函数,混合等功能
+         它的出现,让css更易维护,扩展.
+    后缀 .less 样式文件
+
+
+
+
+    
+Less  Leaner Style Sheets 的缩写 ,是一门向后兼容的css扩展语言(动态版css语言)
+    
+Less.js 利用JavaScript开发的用于将less样式转换成css的格式的工具

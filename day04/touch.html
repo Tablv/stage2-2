@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="d1" style="border:2px solid red; padding:40px"></div>
+    <script>
+        //touch事件
+        d1.addEventListener("touchstart",function(e){
+            console.log('---touchstart---');
+            console.log(e.touches[0]);
+        })
+        d1.addEventListener("touchmove",function(e){
+            console.log('---touchmove---');
+            console.log(e.touches[0]);
+        })
+        d1.addEventListener("touchend",function(e){
+            console.log('---touchend---');
+            console.log(e.changedTouches[0]);
+        })
+    </script>
+</body>
+</html>

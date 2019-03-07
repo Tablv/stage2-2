@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 笔试题   new 做了哪些事情?
+                 new 的原理是什么
+    1.new的原理是什么?
+        1)创建了一个空对象(Object)
+        2)将构造函数的作用域给空对象(把this绑定给新对象)
+        3)将新对象的__proto__ 指向构造函数的原型(继承父类)
+        4)执行构造函数的代码
+
+    2.new的原理是什么?
+     自己实现一个 new
+    
+    -->
+    <script>
+        function Person(sname,sage){
+            this.sname=sname;
+            this.sage = sage;
+            Person.prototype.intrSelf = function(){
+                console.log("原型上的方法: i am is " + this.sname);
+            };
+        };
+        console.log(Person.__proto__);
+        var xm = new Person("小明",28);
+        console.log(xm);
+    // 自己实现new方法
+    //默认第一个参数是  构造函数,其他参数是 实参
+    function myNew(fn){
+        //1.生成一个空对象
+        var obj = {};
+        //2.fn --> 构造函数
+        var result = fn.apply(obj,Array.prototype.slice.call(arguments,1));
+        //3.给obj添加原型
+        obj.__proto__ = fn.prototype;
+        //4.返回结果
+        return obj;
+    };
+    // 后面调用格式
+    var xh = myNew(Person,'小红',28)
+    console.log(xh);
+    </script>
+</body>
+</html>

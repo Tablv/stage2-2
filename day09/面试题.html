@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*  实现call方法 
+        fun.call(obj)
+        第一个参数(必要):没传或传null,undefined,默认还是window
+        第一参数之后的参数,就是函数的实际参数
+        把 fun() 函数内部的this指向obj
+     */
+    function fun(x,y){
+        console.log(this);
+        console.log(x,y);
+    };
+    fun();
+    var xm={
+        sname: 'xiaoming'
+    };
+    fun.call(xm); // 只绑定一次
+    //fun();
+    
+    // 给function.portotype 添加 mycall
+    Function.prototype.mycall=function(ctx){
+        ctx = ctx || window;
+        //把 调用call的函数设置成ctx中的方法
+        ctx.fn = this;
+        //获取 函数实际参数 arguments
+        //转成数组对象
+        var arg = Array.prototype.slice.call(arguments);
+        //调用ctx.fn
+        var result=ctx.fn(...arg);//此时this ---> ctx
+        //删除ctx.fn
+        delete ctx.fn;
+        return result;
+    }
+    //调用mycall
+    fun.mycall(xm); // 效果等同于 fun.call();
+
+    // 拓展 apply() 传参的函数
+    // bind()  
+    //实现bind方法,可以使用call() apply()
+    Function.prototype.mybind = function(ctx){
+        //得到mybind方法传入的实参
+        var arg1 = Array.prototype.slice.call(arguments);
+        var _this = this;
+        //返回一个新函数
+            return function F(){
+                var arg2 = Array.prototype.slice.call(arguments);
+                //this --> window
+                if(this instanceof F){
+                    return new _this(...args1,...arg2);
+                }
+                return _this.apply(ctx,arg1.concat(arg2));
+            }
+    }
+
+    function test(){
+        var age = 123;
+        return function(){
+            age++;
+            console.log(age);
+        };
+    };
+   var tes = test();
+   tes();
+    </script>
+</body>
+</html>

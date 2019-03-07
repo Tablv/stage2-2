@@ -1,0 +1,110 @@
+webStorage -- web存储(客户端)
+前端开发分为三层:
+1 -- 针对浏览器
+2 -- 前端+node 服务器端
+3 -- native 原生App
+--  使用浏览器提供的API实现将数据存储到电脑上,web存储赋予了浏览器的记忆功能
+
+1.什么是会话控制?
+TCP三次握手--建立连接
+    http协议:   无连接(:每次只是处理一个请求) \ 无状态(每次请求服务器时不会记住请求是谁发吧)
+    会话控制:就是在网站中根据一个绘画,从而呈现我们想要的结果;
+
+2. cookie 网景公司发明1993
+    1--在http协议中,采用了一种机制来记录客户端和服务器端交互的信息,这种机制叫做cookie
+    有了cookie,服务器就可以判断用户
+    2. cookkie  一般是由服务成功,在客户端,存储,维护
+    一般分为两类:
+    持久Cookie:保存在硬盘中,长期有效,用户也可以设置有效时间
+
+    非持久cookie:  由浏览器维护,保存在内存中,浏览器关闭就消失.
+3. cookie的使用场景
+    永久登录,添加购物车...
+
+4. 客户端设置cookie
+    document.cookie     可以读写cookie
+
+5. cookie的属性
+    1. name: cookie的名字
+    2. value: cookie的内容
+    3. expires/max-age: 设置cookie的有效时间,如果不设置,就是非持久cookie
+        max-age 以秒为单位,逐渐取代了expires
+    4. path:   默认地址'/',设置cookie的路径
+    5. domain: 指域名,设置cookie所在的域,如果没有设置,就会自动绑定到执行语句的所在域
+    6. secure: 安全性 http协议本身是安全的,当值为true时,必须是HTTPS协议下,才能发送cookie,默认值是false
+    7. HttpOnly:设置值为true,不能用js来读写cookie,防止跨域脚本的攻击.
+
+6. cookie的缺陷
+    1.cookie中不要存敏感数据,cookie不安全
+    2.每个域名下,cookie个数是由限制的
+    3.cookie保存数据的大小为4kb,name=value(4kb)
+    4.设置cookie之后,每次请求都会附在HTTP的header中一起发送造成带宽的浪费
+
+
+HTML5 提供的本地存储方案   就是提供两个API:
+localStorage | sessionStorage
+
+一:localStorage
+1.localStorage 的特点
+(1) 保存数据的大小 20M 左右
+(2) 保存的数据长期存在,不手动删除就一直存在
+(3) 仅在客户端使用,不和服务端进行通信
+(4) 接口封装较好,有提供API给我使用
+
+2.API:
+localStorage.setItem(key,value);//设置每一项
+localStorage.getItem(key);//根据key值拿value
+localStorage.removeItem(key);//根据key值删value
+localStorage.clear();//清除,删除全部
+localStorage.key(index); //获取指定的key值
+
+
+二:sessionStorage
+(1) sessionStorage保存的数据用于当前浏览器一次会话,当前会话结束,数据被清空
+(2) sessionStorage除了保存数据的有效时间和localStorage不一样,
+    API 和 localStorage是一样的
+
+2.API:
+sessionStorage.setItem(key,value);//设置每一项
+sessionStorage.getItem(key);//根据key值拿value
+sessionStorage.removeItem(key);//根据key值删value
+sessionStorage.clear();//清除,删除全部
+sessionStorage.key(index); //获取指定的key值
+
+
+indexedDB 客户端数据库
+1.  webStorage 使用简单字符串键值对本地的存储,方便灵活,但是大量的结构化数据,就不是很行了
+    indexedDB就是为了能在客户端存储大量结构化数据出现的
+
+2.  在 indexedDB 中大部分操作不是调用方法,而是请求/响应
+    window.indexedDB.open(dbname,version);
+    dbname -->  indexdeDB 数据库的名称   version --> 版本号
+
+3.  IDBOpenDBRequst 对象通过三个事件来处理数据库的操作结果
+    onerror : 请求失败的回调
+    onsuccess: 请求成功的回调
+    onupgradeneeded:   请求数据版本变化回调
+
+4.  indexedDB   数据的回调
+    (1) indexedDB 数据库没有表的概念,而是object store,
+        一个数据库可以包含多个 object store;
+    (2) object store 可以存放多种数据类型,里面存的每条数据都和一个键相关联,每条数据都有一个key
+    (3) 怎么创建object store 对象,只能从 onupgradeneeded 事件回调中创建
+        创建方法:
+        db.creatObjectStore(仓库名,主键名keyPath)
+        主键名使用来设置索引
+
+5. indexedDB 中可以使用 事务 来进行数据库的操作,事务三个模式
+    (1) 只读 readyOnly
+    (2) 读写 readwrite
+    (3) 数据库版本变化 versiononchange
+
+    先创建一个事务,在成功的回调中去创建
+    request.onsuccess = function(){
+        db.transaction(dbname,options)
+    }
+
+6. indexedDB 的优缺点
+    优点:可以存大量数据,可以实现离线访问
+    缺点:API比较复杂,操作大量数据时,有性能消耗
+        兼容问题.IE11以上

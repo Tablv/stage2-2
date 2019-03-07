@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id='c1' width='500' height='400'></canvas>
+  <script>
+    // 1. 获取canvas元素 
+    var c1 = document.getElementById('c1');
+    var ctx = c1.getContext('2d');
+    // 绘制矩形  strokeRect() fillRect()
+    // 设置 绘制样式  
+    ctx.fillStyle = '#797979';
+    ctx.fillRect(10,10, 100,100);  
+    // 绘制矩形边框 
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = 5;
+    ctx.strokeRect(120, 10, 100, 100); 
+    // clearRect() 实现矩形边框  w - 10 
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(230, 10, 100, 100);
+    ctx.clearRect(240,20 ,80, 80);
+  </script>
+</body>
+</html>

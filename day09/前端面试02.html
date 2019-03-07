@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*  实现call方法 
+        fun.call(obj)
+        第一个参数(必要):没传或传null,默认还是window
+        第一个参数后的参数,就是函数实际函数
+        把fun函数内部的this 指向 obj
+     */
+    function foo(x,y){
+        console.log(this);
+        console.log(x,y);
+    };
+    var xm={
+        sname: 'xiaoming'
+    };
+    //foo.call("xxx",1,2); // 只绑定一次
+    //foo();
+    
+    // 给function.portotype 添加 mycall
+    Function.prototype.mycall=function(ctx){
+        ctx=ctx || window;
+        //把调用call的函数设置成ctx中的方法
+        ctx.fn=this;
+        //获取函数实际参数
+        var arg=Array.prototype.slice.call(arguments,1);
+        //调用他
+        var result=ctx.fn(...arg);
+        //删除 fn
+        delete ctx.fn;
+        return result;
+    };
+    //调用mycall
+    foo.mycall(xm,99,10); // 效果等同于 fun.call();
+
+    </script>
+</body>
+</html>

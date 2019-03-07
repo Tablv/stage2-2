@@ -1,0 +1,78 @@
+-响应式页面-
+一个页面,能够在不同分辨率(pc.phone,pad)和尺寸设备上都有很好的浏览器体验
+
+
+1.编写响应式页面
+    1. 设置 viewport 视口, 它只能在移动端起作用.
+    2. 避免使用绝对单位(px),用相对单位(%,em,rem,auto)
+    3. 使用流式布局(float),脱离文档流
+    4. 图片大小能自适应 (max-width:100px,min-width:20px)(最大宽度,最小宽度)
+    5. 根据浏览器的屏幕的特征,有选择性的去执行css样式 ---CSS3 Media Query(媒体查询)
+        Media : 媒体  --浏览网页的设备
+        Query : 查询  --比如: 分辨率,宽度,高度,类型,色彩,声位.....
+        语法:
+            @media max-width:990px {
+                //执行一些 css 样式
+            }
+            或者
+            @media (max-width:990px) and (min-width:555px){
+                //执行一些 css 样式
+            }
+
+前端技术---
+公众号 --前端大全    前端之巅
+书籍   --犀牛书 高级程序设计
+导航   --http://www.alloyteam.com/nav/
+
+响应式页面框架  -- Bootstrap(样式框架) Twitter
+    它适用于制作移动端优先的响应式框架页面
+    Bootstrap 主要就是css
+    Bootstrap 主要涉及的内容
+    Html : 为html5 已有的标签扩展了一些自定义属性 
+            自定义方法: data-* = 值
+    CSS  : CSS Reset ; 提供了上千个 class
+    JS   : 提供了十几个插件,基于jQuery
+
+1. Bootstrap -- 全局css样式
+    Button 按钮: 基础样式 btn 
+    
+    栅格系统(Grid Layout):Bootstrap响应式布局的关键
+    使用规则:
+    (1) 所有的行必须使用容器中 container | container-fliud(定宽:在不同的容器下,宽度是一样的)
+        .container          容器宽
+        >1200px(超大pc)     1170px
+        >992px(普通pc)      970px
+        >768px(pad)         750px
+        <768px(手机)        auto
+    (2) 栅格系统有行(row)和列(col)的概念,一行分为12类
+    (3) 内容只能放在col中,col中可以再次嵌套row.
+    (4) col分为四类:col-lg | col-md | col-sm | col-xs
+    (5) col-md-* : *值是1~12之间
+
+        col-lg-* : 只对超大pc有效
+        col-md-* : 对普通pc以上有效
+        col-sm-* : 对pad以上有效
+        col-xs-* : 对手机以上有效
+        可以对同一列设置不同分辨率下的占用列数
+    eg:
+        <!-- 响应式???不同分辨率下,采用不同的css的样式 -->
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-3">pc:8,pad:6,iph:3</div>
+        </div>
+
+    (6) hidden-lg|md|sm|xs 列的隐藏
+        想在哪个分辨率下隐藏,就写哪个样式,不向上执行,多个分辨率隐藏,就写多个样式
+    eg:
+        <h2>布局,列的隐藏 hidden</h2>
+        <!-- 响应式???不同分辨率下,采用不同的css的样式 -->
+        <div class="row">
+            <div class="col-md-8 col-xs-6 hidden-sm">pc:8,iph:6,pad:隐藏</div>
+        </div>
+    (7) col-md-offset-n    列的偏移  n:偏移的列数
+
+    eg:
+        <h2>布局,列的偏移 offset</h2>
+        <!-- 响应式???不同分辨率下,采用不同的css的样式 -->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-6 col-xs-offset-3">pc:8偏移2列,iph:6偏移3列</div>
+        </div>

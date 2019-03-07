@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id='c1' width='500' height='400'></canvas>
+  <canvas id='c2' width='500' height='400'></canvas>
+  <script>
+    var c1 = document.getElementById('c1');
+    var ctx = c1.getContext('2d');
+    // 绘制圆 arc() 
+    ctx.beginPath();
+    ctx.arc(100,100, 80, 0, Math.PI*2);
+    ctx.closePath();
+    // 调用绘制方法 
+    ctx.strokeStyle = '#333';
+    ctx.lineWidth = 5;
+    ctx.stroke(); // 绘制空心圆
+    // 绘制第二个圆
+    ctx.beginPath();
+    ctx.arc(320,100, 80, 0, Math.PI*2);
+    ctx.stroke(); // 绘制空心圆
+
+  </script>
+  <script>
+    var c2 = document.getElementById('c2');
+    var ctx2 = c2.getContext('2d');
+    // 绘制放射的渐变圆 
+    for(var i = 1; i< 20; i++){ 
+      // 开始定义路径
+      ctx2.beginPath();
+      ctx2.arc(i*15, i*15, i*8, 0, Math.PI*2);
+      ctx2.closePath();
+      // 设置样式 
+      ctx2.fillStyle = 'rgba(255,0,255,'+ i* 0.01 +')';
+      // 绘制 
+      ctx2.fill(); 
+
+      // 思考： 效果 圆是一个一个的出来，每绘制出来一个，之前的圆就消失
+    }
+  </script>  
+</body>
+</html>

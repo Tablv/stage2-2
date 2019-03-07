@@ -1,0 +1,97 @@
+--Boot-表单-
+Boot 全局css样式中  最重要的是栅格布局系统 ---响应式布局关键
+
+<form>
+    <div class="form-group">
+        <lable id = ''>
+            描述
+        </lable>
+        <input type="" id="" class="form-control">
+    </div>
+</form>
+
+boot的检测工具   bootlint(官方提供的检测boot页面的Html.class使用方面的错误)
+
+--bootlint.js
+
+bootstrap --组件
+1.字体图标
+    glyphicons   -套有boot提供的字体图标(免费试用 +250).可用于移动端开发中常用的小图标
+    1.字体图标的本质不是图片,而是字体.
+    2.glyphicons 图标只能用于空元素,基础样式 glyphicon
+        <span　class='glyphicon'></span>
+
+
+    @font-face { //定义web字体
+            font-family: 'Glyphicons Halflings';
+
+            src: url('../fonts/glyphicons-halflings-regular.eot');
+            src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+        }
+
+
+    .glyphicon {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+        }
+    input + 搜索图标 
+
+
+
+2.下拉菜单
+    <div class='dropdown'> //父元素  相对定位
+        <a class='btn'>触发元素</a> //click事件,触发
+        <ul class='dropdown-menu'> //绝对定位
+            <li>列表内容</li>
+        </ul>
+    </div>
+
+
+3. bootstrap -- 响应式导航条
+    1.在pc中显示所有导航内容,在移动端只显示LOGO和菜单折叠按钮,菜单折叠按钮,可以展开和隐藏导航项
+    2.基础class : navbar
+    3.导航条的两种定位方式: nabar-fixed-top/bottom 定位页面最上方/最下方
+
+
+
+CSS 补充知识点:
+    1.盒子模型的计算方法
+    box-sizing : content-box;//默认值
+                 width + border + padding + margin
+    
+    box-sizing : border-box;
+                 width(包含border+padding) + margin
+
+    2.父元素的第一个子元素 margin-top 越界问题
+    解决方案:
+        (1):给父元素添加 border-top:1px;
+        (2):给父元素添加 padding-top:1px;
+        (3):给父元素添加 overflow:hidden;(子元素的长度宽度不能超过父元素)
+        (4):添加前置内容生成  ::before (伪类选择器)
+            .parent::before{
+                content:"";
+                display:table;
+            }
+    3.所有子元素浮动.父元素高度为0的问题
+        (1):给父元素添加高度 ---不建议
+        (2):给父元素添加overflow:hidden;
+        (3):添加后置内容生成: ::after (伪类选择器)
+            .parent::after{
+                content:"";
+                display:table;
+                clear:both;
+            }
+
+合并之后的写法:
+.parent::before,.parent::after{
+    content:"";
+    display:table;
+}
+.parent::after{
+    clear:both;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang='zh-cn'>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Bootstrap 101 Template</title>
+    <link href='../boot/css/bootstrap.css' rel='stylesheet'>
+    <!--[if lt IE 9]>
+    <script src='boot/js/html5shiv.min.js'></script>
+    <script src='boot/js/respond.min.js'></script>
+    <![endif]-->
+    <style>
+        div{
+            border:1px solid #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- 栅格基本结构 : 容器>row>col>内容 -->
+    <div class="container">
+        <h2>全局样式之栅格系统</h2>
+        <div class="row">
+            <div class="col-md-1">
+                col-md-1
+            </div>
+        </div>
+        <h2>每一行添加一列</h2>
+        <div class="row">
+            <div class="col-sm-1">col-sm-1</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">col-sm-2</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">col-sm-3</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">col-sm-4</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5">col-sm-5</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">col-sm-6</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7">col-sm-7</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">col-sm-8</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">col-sm-9</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">col-sm-10</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-11">col-sm-11</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">col-sm-12</div>
+        </div>
+        <h2> 布局 : 一行多列 282</h2>
+        <div class="row">
+            <div class="col-sm-2">左侧内容</div>
+            <div class="col-sm-8">主题内容</div>
+            <div class="col-sm-2">右边内容</div>
+        </div>
+        <h2>布局,一个列在不同分辨率下有不同的宽度</h2>
+        <!-- 响应式???不同分辨率下,采用不同的css的样式 -->
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-3">pc:8,pad:6,iph:3</div>
+        </div>
+        <h2>布局,列的隐藏 hidden</h2>
+        <!-- 响应式???不同分辨率下,采用不同的css的样式 -->
+        <div class="row">
+            <div class="col-md-8 col-xs-6 hidden-sm">pc:8,iph:6,pad:隐藏</div>
+        </div>
+        <h2>布局,列的偏移 offset</h2>
+        <!-- 响应式???不同分辨率下,采用不同的css的样式 -->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-6 col-xs-offset-6">pc:8偏移2列,iph:6偏移6列</div>
+        </div>
+    </div>
+ 
+    
+    <br><br><br><br><br><br><br><br>
+    <script src='../boot/js/jquery.min.js'></script>
+    <script src='../boot/js/bootstrap.js'></script>
+</body>
+</html>

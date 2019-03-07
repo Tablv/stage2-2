@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style> 
+        /* media query */
+        @media (min-width:990px){
+            /* 在分辨率大于990时的样式 */
+            .box{
+                background: red;
+            }
+        }
+        @media (max-width:989px) and (min-width:670px){
+            /* 此时,css样式作用于分辨率 处于 670 到989之间的时候 */
+            .box{
+                background:green;
+            }
+        }
+        @media (max-width:669px){
+            /* 在分辨率小于670排序时的样式 */
+            .box{
+                background:blue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2> CSS3 Media Query</h2>
+    <div class="box">
+       <!-- 假文 lorem + tab -->
+       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam quae corrupti labore fugit adipisci suscipit consequatur itaque magnam omnis. Porro fugiat eum perferendis beatae rerum commodi amet, laudantium fuga autem?
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam voluptatum, odio consequuntur ea fugiat delectus, praesentium inventore officiis quaerat nam sint ut minima laboriosam id deserunt culpa, iure magni non.
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio error placeat, iste, amet voluptas quia eum repellat omnis quas molestiae commodi dicta molestias laborum quo saepe officiis nemo labore eligendi?
+
+    </div>
+</body>
+</html>

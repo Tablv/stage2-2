@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //1 创建数据库
+    var request = window.indexedDB.open('mydb'); 
+    // console.log(db);   
+    //注册请求成功的回调
+    request.onsuccess = function(e){
+        //获取数据库对象
+       var transaction = e.target.result.transaction('king of glory','readwrite');
+       //获取objectStore数据
+       var res = transaction.objectStore('king of glory');
+       //根据keyPath索引来获取值
+       var obj = res.get(222);
+       //获取成功,执行回调
+       obj.onsuccess = function(){
+           console.log('获取成功',e.target.result);
+       };
+       //添加数据
+       res.add({hero:'白起',author:'小明',pid:111});
+       //删除数据
+       res.delete(333);
+    };
+
+    //创建object store
+    
+    request.onupgradeneeded=function(e){
+        var db = e.target.result;
+        //获取db对象
+        //创建 object store
+        var objectStore = db.createObjectStore('king of glory',{keyPath:'pid'});
+        //添加数据
+        objectStore.put({hero:'李白',author:'小明',pid:222});
+        objectStore.put({hero:'亚瑟',author:'小刚',pid:333});
+        objectStore.put({hero:'猴子',author:'小王',pid:444});
+        
+        
+    };
+    </script>
+</body>
+</html>

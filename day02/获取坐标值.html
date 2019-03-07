@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='eventTools.js'></script>
+	<style>
+		.point {
+				position: absolute;
+				top: 10px;
+				left: 450px;
+			}
+	</style>
+</head>
+<body>
+	<canvas id="c1" width="400" height="400" style="background:#fff"></canvas>
+	<div class="point">
+		<p>mousedown(鼠标点击时坐标)</p>
+		<p>X: <span class="pointX">0</span></p>
+		<p>Y: <span class="pointY">0</span></p>
+		<p>mousemove(鼠标移动时坐标)</p>
+		<p>X: <span class="pointX1">0</span></p>
+		<p>Y: <span class="pointY1">0</span></p>
+		<p>mouseup(鼠标释放时坐标)</p>
+		<p>X: <span class="pointX2">0</span></p>
+		<p>Y: <span class="pointY2">0</span></p>
+	</div>
+	<script>
+		//调用 mouseEvent()方法
+		var c1 = document.getElementById('c1');
+		var ctx = c1.getContext('2d');
+		var spans = document.querySelectorAll('span');
+		eventTools.mouseEvent(c1,function(e){
+			var p = e.point;
+			spans[0].innerHTML = p.dx;
+			spans[1].innerHTML = p.dy;
+		},function(e){
+			//鼠标移动事件, 绘制一个圆,圆心就是鼠标实时坐标
+			var x = e.point.dx;
+			var y = e.point.dy;
+			spans[2].innerHTML = x;
+			spans[3].innerHTML = y;
+			ctx.clearRect(0,0,400,400);
+			ctx.beginPath();
+			ctx.arc(x,y,5,0,Math.PI*2);
+			ctx.closePath();
+			ctx.fillStyle = 'red';
+			ctx.fill();
+		},function(e){
+			var p = e.point;
+			spans[4].innerHTML = p.dx;
+			spans[5].innerHTML = p.dy;
+		})
+
+	</script>
+</body>
+</html>

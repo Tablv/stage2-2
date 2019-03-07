@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*  前端面试 */
+        //1.引用类型的赋值
+        function test(person){
+            person.age=20;
+            person={
+            name:'xm',
+            age:30
+            }
+            return person;
+        }
+        var p1={
+            name:'xh',
+            age:25
+        };
+        var p2=test(p1);
+        console.log(p1); //{name:'xh' age:20}
+        console.log(p2); //{name:'xm' age:30}
+
+        //循环中使用闭包
+        for(var i=1;i<=3;i++){
+            (function(j){ // j - 局部变量 1 受保护的的局部变量,保存在作用域链中
+                 setTimeout(function(){
+                // console.log(j);
+            },2000) })(i);
+        }   
+           
+        /* 深|浅拷贝 - 复制一个对象*/
+        var xm={
+            name:'xm',
+            job:{
+                skill:"web"
+            }
+        }
+    //写一个深拷贝方法
+    //undefined null 不能拷贝函数
+    //不能解决对象循环引用问题
+        function deepClone(obj){
+            var newobj=obj instanceof Array?[]:{};
+            for(var i in obj){
+                newobj[i]=typeof obj[i] === 'object'?
+                deepClone(obj[i]):obj[i];
+            };
+            return newobj;
+        }
+        var cloneXm=deepClone(xm);
+        console.log(cloneXm);
+    
+    //深拷贝 方法二
+    //使用序列化方法 JSON.parse(JSON.stringify(obj))
+        var parseXm=JSON.parse(JSON.stringify(xm));
+        console.log(parseXm);
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+day02
+鼠标事件的封装(mouseup,mousedown,mousemove)
+    一般情况下,者三个事件是结合起来使用的,我们可以把这三个事件封装起来使用
+    鼠标事件封装 --eventTools.js
+
+
+实现一个刮刮乐的效果
+    -鼠标按下 鼠标移动 鼠标抬起
+    -html 元素 canvas画布

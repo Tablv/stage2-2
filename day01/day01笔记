@@ -1,0 +1,114 @@
+  IDE 编辑器 VSCode Atom 
+    把 .vscode 压缩包解压到 c:/ user / Admin 路径下 
+    在重启 vscode 应用
+ - 第二阶段下 H5 + web移动端 + 面试题 - 
+ HTML5 - canvas + webStorage  (Storage:仓库,存储) 
+ day01 - canvas 
+
+1、canvas 中文就是画布的意思, 苹果公司推出的概念, HTML(w3c)加入这个元素,主流浏览器都支持. 
+canvas 主要是由几组API(方法)构成的. 
+
+2、HTML5 添加的最受欢迎的功能就是 <canvas/> 元素
+
+3、canvas 本身布不具备绘图的能力，它只是一张空画布，如果要在画布上进行绘制，必须要结合JS脚本进行绘制。
+
+4、canvas 能够做什么？ 
+ 1. 基础图形的绘制 
+ 2. 文字的绘制 
+ 3. 图形的变化和图片的绘制 
+ 4. 视频的处理    
+ 5. 动画的实现   
+ 6. 小游戏的制作  
+
+5、主流浏览器都支持（chrome, fireFox），但是IE8及以下不支持H5。
+
+6、canvas 的基本概念 
+ 1. 在HTML中定义 canvas 标签 
+ 2. 在JS中获取 canvas 元素 
+ 3. 创建 画布对象 canvas.getContext('2d');
+     注意： 参数必须是 2d  [ 3d ]; 
+            目前只使用 2d     
+
+7、绘制坐标轴 
+ 1. 横轴向右是正，纵轴向下是正，绘制直线 起点-终点
+   API： 
+     (1) beginPath() 定义开始路径
+     (2) closePath()  结束前面定义的路径 
+     (3) moveTo(float x, float y) 当前路径移动到的坐标
+            moveTo(0,0) - 
+     (4) lineTo(x, y) 当前路径连接到的坐标 
+            lineTo(100,100) 
+            lineTo(300,300)
+            ... 
+  绘制API：
+     (1) fill() 填充内容/当前路径
+     (2) stroke() 填充边框
+     (3) fillStyle 设置填充样式 
+     (4) strokeStyle 设置边框样式 
+     (5) lineWidth 设置笔触的宽度 
+     (6) lineJoin  设置线条焦点的样式 
+           bevel  斜角
+           round  圆角
+           miter  默认 尖角
+
+ 2. 绘制矩形 
+  1. strokeRect(x, y, width, height) 绘制一个矩形边框 
+  2. fillRect(x, y , w, h) 绘制一个实心矩形 
+  3. clearRect(x, y, w, h) 清除一个指定的矩形 
+
+ 3. 绘制文字 
+  1. fillText(text, x, y); 绘制实心文字 
+  2. strokeText(text, x, y); 绘制空心文字 
+     属性： 
+       font : 设置文字字体，类似于CSS中的font属性 
+       textAlign: 水平对齐方法 
+       textBaseline: 基线对齐(垂直对齐) 
+
+ 4. 设置阴影 
+   1. shadowColor :  设置阴影颜色 
+   2. shadowOffsetX/Y : 设置阴影的偏移方向 
+   3. shadowBlur: 设置阴影的模糊程度         
+ 
+ 4. 绘制圆  
+   1. arc(x,y,radius,startAng,endAng,direction) 
+      x|y : 是确定圆的圆心 
+      radius: 圆的半径 
+      startAng|endAng: 圆的起始弧度和结束弧度 0~360 
+      direction : 是否逆时针 true/false 
+
+      fill() | stroke() 
+
+ 5. 图层覆盖 
+   1. 在我们绘制图形时，不同的图形会因为绘制的先后有了层级关系。如果绘制的内容有重叠部分，默认情况下，新绘制的会覆盖在原有的图层上，如何修改图形的层级关系。
+   2. 使用 globalCompositeOperation 属性：它有 12 值
+       - source-over : 新图形会盖在原有图形之上 
+       - destination-out: 原有图形中与新图形重叠的部分会变透明，新图形也是透明的
+
+
+ 6. 绘制图片  
+    1. 创建一个 image 对象 
+       var img = new Image();
+       img.src = '图片路径'; 
+
+    2. drawImage(img, x, y, w, h);
+        参数：img - 图片对象
+              x|y - 图片的位置
+              w|h - 图片的宽高 
+     注意：必须保证图片加载完成之后，在绘制图片                        onload事件 - 页面加载完成之后
+        
+                            
+  7. 运动的圆 
+      绘制动态的效果 
+  
+  8.像素操作
+    1.getImageData(x,y,w,h);
+    该方法返回一个imageData对象,该对象的data属性中储存了画布指定矩形的所有像素
+    2. ImageData对象中的每个像素,存在四个方面的信息,
+        即 RGBA值
+        Red   0~255
+        Green 0~255
+        Blue  0~255
+        Alpha 0~255
+        四个值一组,表示像素
+    3.putImageData(ImageData,x,y)
+      将图像像素数据放回画布中

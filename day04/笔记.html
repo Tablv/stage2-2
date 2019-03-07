@@ -1,0 +1,29 @@
+- 移动端 web
+
+ 1.H5 开发
+ 2.webApp(vue,react)
+ 3.App(React Native/Weex)
+
+1.移动端web:页面运行在移动设备上(通常也称H5页面)
+    1.设备: 移动终端 - 智能手机
+    2.操作系统: 安卓 IOS windowPhone
+    3.UC safari QQ chrome
+    4.浏览器内核: 现在的浏览器内核几乎是以chrome的内核为标准,都是基于 webkit
+
+2.移动端的适配方案
+    视口(viewport):只要你的页面想在移动端显示,就要设置一下viewport.
+        name: viewport 告诉浏览器 meta 标签设置的是viewport属性
+        content:设置的是viewport属性的值
+            width:设置的是device-width(设备宽度)
+            initial-scale:视口默认的缩放比例 1.0
+            user-scalable:设置是否支持缩放 no
+            maximum-scale:最大缩放值1.0
+            minimum-scale:最小缩放值1.0
+
+移动端demo - mJD
+    这个demo 有三个功能:移动端轮播图/倒计时/搜索区域颜色变化
+
+    移动端事件: touch 事件 - touchstart | touchmove | touchend
+                             开始触摸     触摸滑动     触摸结束
+
+    touchcancel - 被迫终止滑动(弹出框)

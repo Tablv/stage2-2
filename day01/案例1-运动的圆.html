@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id='c1' width='500' height='500'></canvas>
+  <script>
+    /* 绘制运动的圆 
+        API: clearRect() 
+        不停的绘制圆，改变圆的圆心，在把之前绘制的圆清除掉
+    */
+    var c1 = document.getElementById('c1');
+    var ctx = c1.getContext('2d');
+    ctx.strokeStyle = '#666';
+    ctx.lineWidth = 5;
+    ctx.strokeRect(0,0,500,500);
+    // 不停的绘制圆 
+    var x = 10,
+        y = 20; 
+    //  定时器 setIntervel
+    var timer = setInterval(function () {
+      // 每次绘制圆之前把画布清空 
+      ctx.clearRect(5,5,490,490);
+      // 绘制圆 
+      ctx.beginPath();
+      ctx.arc(x, y, 10, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.fillStyle = 'red';
+      ctx.fill();
+      // 绘制完成 x++ , y++
+      x++;
+      if(x >= 480){
+        y++,x--;
+      };
+      if(y >= 480){
+        x-=2;
+        // console.log(y);
+      };
+      //x=10,y=480;
+      // if(x>10;y<)
+      // y--;
+    }, 10);
+
+
+
+  </script>
+</body>
+
+</html>

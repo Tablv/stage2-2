@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //localStorage  API使用
+        // 1 设置值
+         localStorage.setItem('test01','this is test01');
+         localStorage.setItem('test03','this is test03');
+         localStorage.setItem('test04','this is test04');
+         
+         //2 读取值
+         var test01=localStorage.getItem('test01');
+         var test02=localStorage.getItem('test02');
+         //如果key是不存在的,值就是 null
+         console.log(test02); //null
+         console.log(test01); //'this is test01'
+         
+
+         //获取指定的key
+         var key = localStorage.key(0);
+         console.log(key);
+         console.log(localStorage);
+         //删除test01
+         localStorage.removeItem('test01');
+         //清空
+         localStorage.clear();
+
+        //  存储对象类型的数据
+        var obj = {
+            name:'小明',
+            age:32,
+            job:'web前端攻城狮'
+        };
+        var arr=[1,2,3,4,5]
+        localStorage.setItem('obj',obj);
+        localStorage.setItem('arr',arr);
+
+
+        // 修改
+        var json_obj = JSON.stringify(obj);
+        localStorage.setItem('json_obj',json_obj);
+
+
+        //封装一层,可以读取对象类型的数据
+        // 1.存的时候,把对象转换成json格式
+        // 2.取得时候,再把json转换成js对象
+        // 3.添加一个有效时间
+        // 参数  key  values  days(day)
+
+        var myLocalStorage = {
+            set:function(key,value,days){
+                var item = {
+                    data:value,
+                    endTime:new Date().getTime() + days*24*60*60*1000
+                }
+                //实现存对象
+                localStorage.setItem(key,JSON.stringify(item));
+
+            },
+            get:function(key){
+
+                //根据key获得json
+                var val = localStorage.getItem(key);
+                //如果json是空的
+                if(!val){
+                    return null;
+                }
+                //将json转成js对象
+                val = JSON.parse(val);
+                //判断endTime 有没有过期
+                //当前时间已经大于有效时间,表示该值已经失效
+                if(new Date().getTime() > val.endTime ){
+                    val =null;
+                    localStorage.removeItem(key);
+                }
+                return val.data;
+               
+            }
+        }
+        
+    </script>
+</body>
+</html>

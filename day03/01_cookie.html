@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>通过document.cookie 来读写方法</p>
+    <script>
+    // 客户端操作cookie
+    var xm= {
+        snam:'小明',
+        sage:22
+    };
+    
+    //[object Object]
+    //数据结构  json
+    var json = JSON.stringify(xm);
+    document.cookie = 'test01=' + json;
+    console.log(xm.toString());//[object Object]
+    var a = 40;
+    console.log(a.toString()) ; //40
+    console.log(Object.prototype.toString(a)); //[object Object]
+    console.log(Object.prototype.toString.call(a)); //[object Number]
+    </script>
+    <script src="setcookies.js"></script>
+</body>
+</html>

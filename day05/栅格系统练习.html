@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang='zh-cn'>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Bootstrap 101 Template</title>
+    <link href='../boot/css/bootstrap.css' rel='stylesheet'>
+    <!--[if lt IE 9]>
+    <script src='boot/js/html5shiv.min.js'></script>
+    <script src='boot/js/respond.min.js'></script>
+    <![endif]-->
+    <style>
+    div{
+            border:1px solid #666;
+            padding:1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>作业:响应式布局练习</h2>
+        <!-- 第一行  按钮  输入框  pc:444 ,pd:66-->
+        <div class="row">
+            <div class="col-xs-6 hidden-lg hidden-md hidden-sm"></div>
+            <div class="col-md-4 col-sm-6 col-xs-6 ">
+                <button class="btn">HOME</button>
+                <button class="btn btn-info">NEWS</button>
+                <button class="btn btn-warning">PRODUC</button>
+            </div>
+            <div class="col-md-4 col-md-offset-4 col-sm-6 col-xs-12">
+                <input type='text'   class="form-control" placeholder="请输入">
+            </div>
+        </div>
+        <!-- 第二行,左右结构,pc:93,pd:93 -->
+        <div class="row">
+            <div class="col-xs-12 hidden-md hidden-sm hidden-lg">
+                    左边宣传栏:Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad obcaecati nisi fugiat mollitia autem aspernatur officia iure ea odit incidunt quod possimus labore voluptates minus nihil reiciendis ab, quam similique.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum qui natus repellat cumque id excepturi? Nisi veritatis, hic perspiciatis, aperiam eum nesciunt, nam recusandae dolore blanditiis nemo debitis eius in.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga iusto aperiam sapiente libero possimus accusamus quas explicabo fugit id magnam numquam earum dolores, nihil commodi vitae expedita similique! Cumque, velit.
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus fugit doloribus harum. Maxime quis unde consequuntur mollitia nisi quas. Minus, aliquam. Voluptatum iure praesentium quam temporibus esse quae delectus deserunt.
+            </div>
+            <div class="col-sm-9 col-xs-12">
+                <!-- 左边结构,分为上下两行结构,上为图 3位四等分 -->
+                <div class="row">
+                   <div class="col-sm-3 col-xs-6">
+                        <img src="../boot/img/1.jpg" class="img-responsive" alt="pc图片1">
+                   </div>
+                   <div class="col-sm-3 col-xs-6">
+                        <img src="../boot/img/2.jpg" class="img-responsive" alt="pc图片2">
+                   </div>
+                   <div class="col-sm-3 col-xs-6">
+                        <img src="../boot/img/3.jpg" class="img-responsive" alt="pc图片3">
+                   </div>
+                   <div class="col-sm-3 col-xs-6">
+                        <img src="../boot/img/4.jpg" class="img-responsive" alt="pc图片4">
+                   </div>
+                </div>
+                中间主体:Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente quos labore eligendi, minima et, maxime similique at quo molestiae reiciendis commodi id laudantium nostrum. Ut delectus dignissimos optio necessitatibus quia!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, ipsa! Natus eius delectus in fuga? Ducimus laudantium, odit in accusantium praesentium non quo ipsam facilis, eaque ut, maxime autem? Tempora.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, nam minima laudantium, neque rerum dicta, ut reprehenderit aliquid error blanditiis ducimus recusandae consectetur sunt iusto pariatur voluptas perspiciatis necessitatibus mollitia.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed obcaecati voluptatibus nisi sint culpa animi illo accusamus vitae qui accusantium sequi, velit aperiam at numquam consectetur dolorum consequatur, aut blanditiis.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quaerat rem corporis provident accusantium error animi molestias, dolores aut voluptate, sapiente obcaecati doloribus similique commodi exercitationem id voluptatum rerum a.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit dolore quibusdam rem totam dignissimos possimus doloribus deleniti! Iusto, quidem quibusdam. Odit dolorum labore nam dignissimos tempore consequuntur necessitatibus inventore dicta?
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus, sed repellendus dignissimos vitae doloremque blanditiis eius rerum quo quibusdam obcaecati officiis nobis iure saepe mollitia? Corporis in tempora corrupti saepe!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius cum soluta sed rem ducimus quae, fugiat doloribus dolor ea dolorum odio atque et. Cupiditate dicta accusantium dolorum, sed quos exercitationem.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem adipisci repellat officiis ipsum temporibus illum autem magnam, est eius corrupti molestias dolorem. Quam quas minima commodi quaerat esse ipsum impedit?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptatibus enim a quas facere aliquam, unde tenetur praesentium porro quibusdam odit quod temporibus nulla maxime incidunt placeat excepturi ratione voluptates.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet consequuntur laborum doloremque minus? Excepturi repellendus ipsa quo rem molestias praesentium, iure veritatis animi aspernatur non necessitatibus a? Totam, nemo? Assumenda.lore
+            </div>
+           <!-- 右边结构,文本 -->
+           <div class="col-sm-3 hidden-xs">
+                右边宣传栏:Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad obcaecati nisi fugiat mollitia autem aspernatur officia iure ea odit incidunt quod possimus labore voluptates minus nihil reiciendis ab, quam similique.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum qui natus repellat cumque id excepturi? Nisi veritatis, hic perspiciatis, aperiam eum nesciunt, nam recusandae dolore blanditiis nemo debitis eius in.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga iusto aperiam sapiente libero possimus accusamus quas explicabo fugit id magnam numquam earum dolores, nihil commodi vitae expedita similique! Cumque, velit.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus fugit doloribus harum. Maxime quis unde consequuntur mollitia nisi quas. Minus, aliquam. Voluptatum iure praesentium quam temporibus esse quae delectus deserunt.
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br>
+    <script src='../boot/js/jquery.min.js'></script>
+    <script src='../boot/js/bootstrap.js'></script>
+</body>
+</html>
+
+
+
+
+
